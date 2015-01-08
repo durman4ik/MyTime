@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component name="dataSourceStorage">
+  <data-source name="Rails MyTime: development" uuid="f7e5c00b-ae58-4639-8cb8-9134e842c99f">
+    <database-info product="" version="" jdbc-version="" driver-name="" driver-version=""/>
+  </data-source>
+  <data-source name="Rails MyTime: test" uuid="00a74bce-f715-4801-b4a6-6531adf2ba90">
+    <database-info product="" version="" jdbc-version="" driver-name="" driver-version=""/>
+  </data-source>
+  <data-source name="Rails MyTime: production" uuid="b85f3808-709b-4ac8-9b6e-965646d33859">
+    <database-info product="" version="" jdbc-version="" driver-name="" driver-version=""/>
+  </data-source>
+</component>

@@ -1,0 +1,33 @@
+.custom
+  .outercontainer.home1
+    .container{:style => 'position:relative;'}
+      =render partial: 'table'
+      %h1#time_view
+      =link_to image_tag('', id: 'button_nonpressed'),nil, id: 'button_start', :remote => true
+
+.custom
+  .outercontainer.social
+    .container
+      .row.flex-center
+        .col-md-3
+          =link_to image_tag('Twitter-round.png'), '#'
+          %h2 Twitter
+        .col-md-3
+          =link_to image_tag('Facebook-Round.png'), '#'
+          %h2 Vkontakte
+        .col-md-3
+          =link_to image_tag('Facebook-Round.png'), '#'
+          %h2 Facebook
+
+    .clearfix
+
+.footer.text-center
+  .custom
+    %p
+      Site name © 2014
+      |
+      =link_to 'Поддержка пользователей', '#'
+
+
+
+

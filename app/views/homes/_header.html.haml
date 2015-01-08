@@ -1,0 +1,33 @@
+.custom
+  .navbar.navbar-inverse.navbar-default.navbar-fixed-top
+    .navbar-inner-lilac
+      .container
+        .navbar-header
+          =link_to image_tag('logo.png', width: '50', height: '50', class: 'visible-xs visible-sm logo-small'), '#'
+          %button.navbar-toggle{:type => 'button'}
+            %span.sr-only Toggle navigation
+            %span.icon-bar
+            %span.icon-bar
+            %span.icon-bar
+        #bs-example-navbar-collapse-1.collapse.navbar-collapse
+          %ul.nav.navbar-nav
+            %li
+              =link_to 'Home', root_path
+            %li
+              %a{:href => '/services.html'} Services
+            %li
+              %a{:href => '/about.html'} About
+            %li
+              %a{:href => '/clients.html'} Clients
+          .visible-md.visible-lg{:style => 'height:0px;width:150px;margin:0 auto;'}
+            %div{:style => 'position:fixed; text-align:center; width:150px;z-index:999; height:20px; top:5px;'}
+              =link_to image_tag('logo.png', width: '65', height: '65'), root_path
+          %ul.nav.navbar-nav.navbar-right
+            %li
+              %a{:href => '/approach.html'} Approach
+            %li
+              %a{:href => '/activate-media-framework.html'} AMF
+            %li
+              %a{:href => '/contact.html'} Contact
+            %li
+              %a{:href => '/blog'} Blog

@@ -1,0 +1,5 @@
+Time::DATE_FORMATS[:day_month_year] = '%d %B %Y'
+Time::DATE_FORMATS[:only_time] = '%T'
+Time::DATE_FORMATS[:only_hours] = '%H'
+Time::DATE_FORMATS[:only_minutes] = '%M'
+Time::DATE_FORMATS[:only_seconds] = '%S'

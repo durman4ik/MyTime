@@ -1,0 +1,15 @@
+%table.table.main-table
+  %thead
+    %tr
+      %th Day
+      %th Plan time
+      %th Summary day time
+  - @days.each do |d|
+    %tbody.left-aligned-tbody
+      %tr
+        %td
+          =d.day
+        %td
+          4 часа
+        %td
+          =d.time
