@@ -60,13 +60,7 @@ class Timer
 
             if typeof(Storage) != undefined
               localStorage.setItem('is_timer_started1', 11)
-              document.cookie = 'start_date=' + start_date + ";"
-
-            $(window).bind('beforeunload', ->
-              confirm('Вы уверены?')
-              send_data(false, is_start_clicked)
-            )
-
+              document.cookie = 'start_date=' + start_date
 
       when true
         $.ajax(

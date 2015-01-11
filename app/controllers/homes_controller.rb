@@ -6,6 +6,7 @@ class HomesController < ApplicationController
     @days = Home.all.order(:day)
   end
 
+
   def ajax
     @days = Home.all.order(:day)
     @line = Home.find_or_initialize_by(:day => Time.now.to_date)

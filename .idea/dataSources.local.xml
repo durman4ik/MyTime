@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="dataSourceStorageLocal">
+    <data-source name="Rails MyTime: development" uuid="f7e5c00b-ae58-4639-8cb8-9134e842c99f">
+      <user-name>yuri</user-name>
+      <user-password>df98df92df9adf9fdf9bdf93df93df99</user-password>
+      <schema-pattern>MyTime_development.pg_catalog MyTime_development.public</schema-pattern>
+      <default-schemas>MyTime_development.pg_catalog MyTime_development.public</default-schemas>
+    </data-source>
+    <data-source name="Rails MyTime: test" uuid="00a74bce-f715-4801-b4a6-6531adf2ba90">
+      <user-name>yuri</user-name>
+      <user-password>df98df92df9adf9fdf9bdf93df93df99</user-password>
+      <schema-pattern>MyTime_test.pg_catalog MyTime_test.public</schema-pattern>
+      <default-schemas>MyTime_test.pg_catalog MyTime_test.public</default-schemas>
+    </data-source>
+    <data-source name="Rails MyTime: production" uuid="b85f3808-709b-4ac8-9b6e-965646d33859">
+      <first-sync>true</first-sync>
+      <user-password>df96df8fdf97df8adfefdfe4dffcdff1df8ddfe7dff3dffedfe3dfe7dfefdff5dfeedfebdffedfebdfe8dfebdff9dfefdff5dffadfebdff9dff9dffddfe5dff8dfeedf8ddff7df8adf8fdf94</user-password>
+    </data-source>
+  </component>
+</project>

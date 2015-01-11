@@ -23,11 +23,13 @@
             %div{:style => 'position:fixed; text-align:center; width:150px;z-index:999; height:20px; top:5px;'}
               =link_to image_tag('logo.png', width: '65', height: '65'), root_path
           %ul.nav.navbar-nav.navbar-right
-            %li
-              %a{:href => '/approach.html'} Approach
-            %li
-              %a{:href => '/activate-media-framework.html'} AMF
-            %li
-              %a{:href => '/contact.html'} Contact
-            %li
-              %a{:href => '/blog'} Blog
+            - if user_signed_in?
+              %li
+                = link_to 'Выйти', destroy_user_session_path, :method => :delete
+            - else
+              %li
+                = link_to 'Войти', new_user_session_path
+              %li
+                = link_to 'Зарегистрироваться', new_user_registration_path
+              %li
+                %a{:href => '/blog'} Blog
