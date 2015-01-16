@@ -1533,6 +1533,7 @@
       <column name="time" sqlType="varchar" precision="255" scale="0" nullable="true" jdbcType="12"/>
       <column name="created_at" sqlType="timestamp" precision="29" scale="6" nullable="true" jdbcType="93"/>
       <column name="updated_at" sqlType="timestamp" precision="29" scale="6" nullable="true" jdbcType="93"/>
+      <column name="user_id" sqlType="int4" precision="10" scale="0" nullable="true" jdbcType="4"/>
       <primary-key name="homes_pkey" columns="id"/>
     </table>
     <table name="homes_id_seq" schema="public" catalog="MyTime_development" type="SEQUENCE">

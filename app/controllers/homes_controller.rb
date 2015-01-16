@@ -1,28 +1,33 @@
 class HomesController < ApplicationController
 
-  respond_to :js
+  respond_to :js, :json
 
   def index
-    @days = Home.all.order(:day)
+    @user = current_user unless current_user.nil?
+    @days = Home.where(:user_id => @user.id) unless @user.nil?
   end
-
 
   def ajax
     @days = Home.all.order(:day)
-    @line = Home.find_or_initialize_by(:day => Time.now.to_date)
     time = params[:time].to_time(:utc)
-    if @line.time.nil?
-      @line.time = time.to_formatted_s(:only_time)
-    else
-      h = time.to_formatted_s(:only_hours).to_i
-      m = time.to_formatted_s(:only_minutes).to_i
-      s = time.to_formatted_s(:only_seconds).to_i
-      @line.time = (@line.time.to_time(:utc) + h.hours + m.minutes + s.seconds).to_formatted_s(:only_time)
-    end
+    binding.pry
 
-    if @line.save
-      respond_to do |format|
-        format.js
+    respond_to do |format|
+
+      format.js do
+        @line = current_user.homes.find_or_initialize_by(:day => Time.now.to_date)
+        if @line.save_time(time)
+          render 'ajax', format: :js
+        end
+      end
+
+      format.json do
+        @user = User.find_by_authentication_token(params[:authentication_token])
+        @line = @user.homes.find_or_initialize_by(:day => Time.now.to_date)
+
+        if @line.save_time(time)
+          render :json => { :success => true }, :status=>201
+        end
       end
     end
   end

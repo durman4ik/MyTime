@@ -1,8 +1,10 @@
 class SessionsController < Devise::SessionsController
 
   skip_before_filter :authenticate_user!, :only => [:create, :new]
+  skip_before_filter :verify_signed_out_user, only: [:destroy]
+  prepend_before_filter :require_no_authentication, :only => [:create ]
 
-  respond_to :json
+  respond_to :json, :html
 
   def new
     self.resource = resource_class.new(sign_in_params)
@@ -11,19 +13,16 @@ class SessionsController < Devise::SessionsController
   end
 
   def create
-
     respond_to do |format|
       format.html {
         super
       }
       format.json do
-
         resource = resource_from_credentials
-        #build_resource
 
         return invalid_login_attempt unless resource
 
-        if resource.valid_password?(request.env['HTTP_PASSWORD'])
+        if resource.valid_password?(request.env['HTTP_X_ANDROID_PASSWORD'])
           render :json => { user: { email: resource.email, :auth_token => resource.authentication_token } }, success: true, status: :created
         else
           invalid_login_attempt
@@ -38,7 +37,10 @@ class SessionsController < Devise::SessionsController
         super
       }
       format.json do
-        user = User.find_by_authentication_token(request.headers['X-api-TOKEN'])
+
+        user = User.find_for_database_authentication(:email => request.headers['HTTP_X_ANDROID_EMAIL'],
+                                                     :authentication_token => request.headers['HTTP_X_ANDROID_TOKEN'])
+
         if user
           user.reset_authentication_token!
           render :json => { :message => 'Session deleted.' }, :success => true, :status => 204
@@ -57,10 +59,10 @@ class SessionsController < Devise::SessionsController
 
   def resource_from_credentials
 
-    data = { email: request.env['HTTP_USER_EMAIL'] }
+    data = { email: request.env['HTTP_X_ANDROID_EMAIL'] }
 
     if res = resource_class.find_for_database_authentication(data)
-      if res.valid_password?(request.env['HTTP_PASSWORD'])
+      if res.valid_password?(request.env['HTTP_X_ANDROID_PASSWORD'])
         res
       end
     end

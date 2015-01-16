@@ -3,6 +3,7 @@
 # You can use CoffeeScript in this file: http://coffeescript.org/
 
 class Timer
+
   #TODO: КУКИ при загрузке страницы
   $(window).bind('onload', ->
     if localStorage.getItem('current_started_timer')
@@ -29,6 +30,7 @@ class Timer
     @date.setHours(@date.getHours() - @hours)
     @date.setMinutes(@date.getMinutes() - @minutes)
     @date.setSeconds(@date.getSeconds() - @seconds)
+
     h = @date.getHours()
     m = @date.getMinutes()
     s = @date.getSeconds()
