@@ -10,7 +10,6 @@ class HomesController < ApplicationController
   def ajax
     @days = Home.all.order(:day)
     time = params[:time].to_time(:utc)
-    binding.pry
 
     respond_to do |format|
 
@@ -24,10 +23,19 @@ class HomesController < ApplicationController
       format.json do
         @user = User.find_by_authentication_token(params[:authentication_token])
         @line = @user.homes.find_or_initialize_by(:day => Time.now.to_date)
-
         if @line.save_time(time)
-          render :json => { :success => true }, :status=>201
+          render :json => { success: true }, :status=>201
         end
+      end
+    end
+  end
+
+  def list_days
+    respond_to do |format|
+      format.json do
+        @user = User.find_by_authentication_token(request.headers['HTTP_X_ANDROID_TOKEN'])
+        json  = @user.homes
+        render :json => { days: json } unless @user.nil?
       end
     end
   end

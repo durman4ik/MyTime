@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   resources :homes
 
   post 'ajax' => 'homes#ajax'
+  post 'get_days' => 'homes#list_days'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
